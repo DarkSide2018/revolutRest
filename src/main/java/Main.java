@@ -2,18 +2,20 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.BankServlet;
+import util.Util;
 
 import java.util.logging.Logger;
 
 public class Main {
+    public static final int PORT = Util.getIntegerProperty("port",9998);
+
     private static Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
         BankServlet bankServlet = new BankServlet();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(bankServlet), "/bank");
-        Server server = new Server(8080);
+        Server server = new Server(PORT);
         server.setHandler(context);
-
         try {
             server.start();
             logger.info("Server starting");
