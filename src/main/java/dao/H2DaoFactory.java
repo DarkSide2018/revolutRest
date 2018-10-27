@@ -37,6 +37,5 @@ public class H2DaoFactory {
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-
     }
 }
