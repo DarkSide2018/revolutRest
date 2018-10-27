@@ -1,3 +1,5 @@
+import dao.H2DaoFactory;
+import dao.UserDao;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -11,6 +13,10 @@ public class Main {
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
+        H2DaoFactory.populateTestData();
+        UserDao userDao = new UserDao();
+        System.out.println(userDao.getUserById(1));
+
         BankServlet bankServlet = new BankServlet();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(bankServlet), "/bank");

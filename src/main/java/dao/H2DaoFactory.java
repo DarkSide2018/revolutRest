@@ -1,5 +1,6 @@
 package dao;
 
+import org.apache.commons.dbutils.DbUtils;
 import org.h2.tools.RunScript;
 import util.Util;
 
@@ -17,11 +18,14 @@ public class H2DaoFactory {
     private static final String dbPassword = Util.getStringProperty("dbPassword");
     private static Logger logger = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClass().getName());
 
-    public void populateTestData() {
+    public H2DaoFactory() {
+        DbUtils.loadDriver(dbDriver);
+    }
+
+    public static void populateTestData() {
         logger.info("Populating Test User Table and data ..... ");
-        Connection conn = null;
-        try {
-            conn = H2DaoFactory.getConnection();
+
+        try (Connection conn = H2DaoFactory.getConnection()) {
             RunScript.execute(conn, new FileReader("src/main/resources/populateDB.sql"));
         } catch (SQLException e) {
             logger.warning("populateTestData(): Error populating user data: ");
