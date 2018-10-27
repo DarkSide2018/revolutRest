@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class UserDao {
-    public static final Logger LOGGER = LoggerFactory.getLogger();
+    private static final Logger LOGGER = LoggerFactory.getLogger();
     private final static String GET_BY_ID = "SELECT * FROM USER WHERE ID=?";
     private final static String GET_ALL = "SELECT * FROM User";
     private final static String GET_BY_NAME = "SELECT * FROM User WHERE name = ? ";
