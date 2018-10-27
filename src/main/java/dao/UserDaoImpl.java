@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interFaces.UserDao;
 import model.User;
 import util.LoggerFactory;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class UserDao {
+public class UserDaoImpl implements UserDao {
     private static final Logger LOGGER = LoggerFactory.getLogger();
     private final static String GET_BY_ID = "SELECT * FROM USER WHERE ID=?";
     private final static String GET_ALL = "SELECT * FROM User";
@@ -20,6 +21,7 @@ public class UserDao {
     private final static String UPDATE = "UPDATE User SET name = ? WHERE ID=? ";
     private final static String DELETE_BY_ID = "DELETE FROM User WHERE id = ? ";
 
+    @Override
     public User getUserById(long userId) {
         LOGGER.info("getUser by id: " + userId);
         ResultSet rs = null;
@@ -40,6 +42,7 @@ public class UserDao {
         return u;
     }
 
+    @Override
     public List<User> getAllUsers() {
         LOGGER.info("getAllUsers");
         ResultSet rs = null;
@@ -59,6 +62,7 @@ public class UserDao {
         return users;
     }
 
+    @Override
     public User getUserByName(String userName) {
         LOGGER.info("getUserByName");
         ResultSet rs = null;
@@ -78,6 +82,7 @@ public class UserDao {
         return u;
     }
 
+    @Override
     public void insertUser(User user) {
         LOGGER.info("insertUser");
         try (Connection conn = H2DaoFactory.getConnection();
@@ -90,6 +95,7 @@ public class UserDao {
         }
     }
 
+    @Override
     public void updateUser(Long userId, User user) {
         LOGGER.info("updateUser");
         try (Connection conn = H2DaoFactory.getConnection();
@@ -103,6 +109,7 @@ public class UserDao {
         }
     }
 
+    @Override
     public void deleteUser(long userId) {
         LOGGER.info("deleteUser");
         try (Connection conn = H2DaoFactory.getConnection();

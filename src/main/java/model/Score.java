@@ -44,4 +44,14 @@ public class Score {
     public void setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
     }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", balance=" + balance +
+                ", currencyCode='" + currencyCode + '\'' +
+                '}';
+    }
 }

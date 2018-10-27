@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interFaces.ScoreDao;
 import model.Score;
 import util.LoggerFactory;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ScoreDao {
+public class ScoreDaoImpl implements ScoreDao {
     private static final String SELECT_BY_ID = "SELECT * FROM Score WHERE id=?";
     private final static String UPDATE = "UPDATE Score SET userID = ?,balance=?,currencyCode=? WHERE ID=? ";
     private static final String GET_ALL = "SELECT * FROM Score";
@@ -19,6 +20,7 @@ public class ScoreDao {
     private static final String DELETE = "DELETE FROM Score WHERE id = ?";
     private static final Logger LOGGER = LoggerFactory.getLogger();
 
+    @Override
     public Score getScoreById(long scoreId) {
         LOGGER.info("getScore by id: " + scoreId);
         ResultSet rs = null;
@@ -41,6 +43,7 @@ public class ScoreDao {
         return score;
     }
 
+    @Override
     public List<Score> getScoreByCurrencyCode(String code) {
         LOGGER.info("getScore by currencyCode: " + code);
         ResultSet rs = null;
@@ -65,6 +68,7 @@ public class ScoreDao {
         }
     }
 
+    @Override
     public List<Score> getAllScores() {
 
         LOGGER.info("getAllScores");
@@ -88,6 +92,7 @@ public class ScoreDao {
         return scores;
     }
 
+    @Override
     public void insertScore(Score score) {
         LOGGER.info("insertUser");
         try (Connection conn = H2DaoFactory.getConnection();
@@ -102,6 +107,7 @@ public class ScoreDao {
         }
     }
 
+    @Override
     public void updateScore(Long scoreId, Score score) {
         LOGGER.info("updateScore");
         try (Connection conn = H2DaoFactory.getConnection();
@@ -110,13 +116,14 @@ public class ScoreDao {
             stmt.setLong(1, score.getUserId());
             stmt.setBigDecimal(2, score.getBalance());
             stmt.setString(3, score.getCurrencyCode());
-            stmt.setLong(4,scoreId);
+            stmt.setLong(4, scoreId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.warning("Error Updating Score :" + e);
         }
     }
 
+    @Override
     public void deleteScore(long scoreId) {
         LOGGER.info("deleteUser");
         try (Connection conn = H2DaoFactory.getConnection();

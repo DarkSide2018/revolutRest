@@ -1,5 +1,5 @@
 import dao.H2DaoFactory;
-import dao.ScoreDao;
+import dao.ScoreDaoImpl;
 import model.Score;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
@@ -10,10 +10,11 @@ import java.util.List;
 
 import static junit.framework.TestCase.*;
 
-public class ScoreDaoTest {
+public class ScoreDaoImplTest {
     private static
-    Logger log = Logger.getLogger(ScoreDaoTest.class);
-    private final ScoreDao scoreDao = new ScoreDao();
+    Logger log = Logger.getLogger(ScoreDaoImplTest.class);
+    private final
+    ScoreDaoImpl scoreDaoImpl = new ScoreDaoImpl();
 
 
     @BeforeClass
@@ -25,40 +26,40 @@ public class ScoreDaoTest {
 
     @Test
     public void testGetAllScores() {
-        List<Score> allScores = scoreDao.getAllScores();
+        List<Score> allScores = scoreDaoImpl.getAllScores();
         assertTrue(allScores.size() > 1);
     }
 
     @Test
     public void testGetScoreById() {
-        Score u = scoreDao.getScoreById(2L);
+        Score u = scoreDaoImpl.getScoreById(2L);
         assertEquals(new BigDecimal("200.0000"), u.getBalance());
     }
 
     @Test
     public void testGetNonExistingScoreById() {
-        Score u = scoreDao.getScoreById(500L);
+        Score u = scoreDaoImpl.getScoreById(500L);
         assertNull(u);
     }
 
     @Test
     public void testCreateScore() {
         Score u = new Score(2, new BigDecimal(500.58), "abc");
-        scoreDao.insertScore(u);
-        Score uAfterInsert = scoreDao.getScoreByCurrencyCode("abc").get(0);
+        scoreDaoImpl.insertScore(u);
+        Score uAfterInsert = scoreDaoImpl.getScoreByCurrencyCode("abc").get(0);
         assertEquals("abc", uAfterInsert.getCurrencyCode());
     }
 
     @Test
     public void testUpdateScore() {
         Score u = new Score(1L, new BigDecimal(80.90), "test2");
-        scoreDao.updateScore(3L, u);
-        assertEquals(new BigDecimal("80.9000"), scoreDao.getScoreById(3L).getBalance());
+        scoreDaoImpl.updateScore(3L, u);
+        assertEquals(new BigDecimal("80.9000"), scoreDaoImpl.getScoreById(3L).getBalance());
     }
 
     @Test
     public void testDeleteScore() {
-        scoreDao.deleteScore(1L);
-        assertNull(scoreDao.getScoreById(1L));
+        scoreDaoImpl.deleteScore(1L);
+        assertNull(scoreDaoImpl.getScoreById(1L));
     }
 }
