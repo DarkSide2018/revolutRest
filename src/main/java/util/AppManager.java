@@ -1,5 +1,6 @@
 package util;
 
+import dao.H2DaoFactory;
 import dao.ScoreDaoImpl;
 import dao.UserDaoImpl;
 import dao.interFaces.ScoreDao;
@@ -12,6 +13,10 @@ public class AppManager {
     private static final UserDao userDao = new UserDaoImpl();
     private static final BankService bankService = new BankService();
     private static final ScoreService scoreService = new ScoreService();
+    public AppManager() {
+        H2DaoFactory.populateTestData();
+    }
+
     public static ScoreDao getScoreDao() {
         return scoreDao;
     }

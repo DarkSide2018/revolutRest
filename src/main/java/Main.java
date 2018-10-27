@@ -14,7 +14,7 @@ public class Main {
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
-        H2DaoFactory.populateTestData();
+
         BankServlet bankServlet = new BankServlet();
         ScoreServlet scoreServlet = new ScoreServlet();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);

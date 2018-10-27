@@ -26,18 +26,20 @@ public class BankServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
+        try {
         String fromScore = req.getParameter("fromScore");
+        if(fromScore == null) throw new Exception("fromScore empty");
         String toScore = req.getParameter("toScore");
         String currency = req.getParameter("currency");
         String amount = req.getParameter("amount");
-        try {
+
             UserTransaction userTransaction = new UserTransaction(currency, new BigDecimal(amount), Long.valueOf(fromScore), Long.valueOf(toScore));
             bankService.transferMoney(userTransaction);
-        } catch (SQLException e) {
-            LOGGER.warning("problem with transfer with" + e.getMessage());
+            resp.getWriter().println("successTransfer");
+        } catch (Exception e) {
+            LOGGER.warning("problem with transfer with: " + e.getMessage());
         }
-        resp.getWriter().println("successTransfer");
+
     }
 
     @Override
