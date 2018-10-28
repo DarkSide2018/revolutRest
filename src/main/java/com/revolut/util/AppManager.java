@@ -1,12 +1,12 @@
-package util;
+package com.revolut.util;
 
-import dao.H2DaoFactory;
-import dao.ScoreDaoImpl;
-import dao.UserDaoImpl;
-import dao.interFaces.ScoreDao;
-import dao.interFaces.UserDao;
-import dao.BankDao;
-import service.ScoreService;
+import com.revolut.dao.H2DaoFactory;
+import com.revolut.dao.ScoreDaoImpl;
+import com.revolut.dao.UserDaoImpl;
+import com.revolut.dao.interFaces.ScoreDao;
+import com.revolut.dao.interFaces.UserDao;
+import com.revolut.dao.BankDao;
+import com.revolut.service.ScoreService;
 
 public class AppManager {
     private static final ScoreDao scoreDao = new ScoreDaoImpl();

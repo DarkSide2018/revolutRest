@@ -1,9 +1,9 @@
-package servlets;
+package com.revolut.servlets;
 
-import model.UserTransaction;
-import dao.BankDao;
-import util.AppManager;
-import util.LoggerFactory;
+import com.revolut.model.UserTransaction;
+import com.revolut.dao.BankDao;
+import com.revolut.util.AppManager;
+import com.revolut.util.LoggerFactory;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

@@ -1,8 +1,8 @@
-package dao;
+package com.revolut.dao;
 
-import dao.interFaces.ScoreDao;
-import model.Score;
-import util.LoggerFactory;
+import com.revolut.dao.interFaces.ScoreDao;
+import com.revolut.model.Score;
+import com.revolut.util.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

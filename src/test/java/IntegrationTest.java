@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import util.Util;
+import com.revolut.util.Util;
 
 import java.io.IOException;
 import java.math.BigDecimal;

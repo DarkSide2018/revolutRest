@@ -1,9 +1,9 @@
-package servlets;
+package com.revolut.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Score;
-import service.ScoreService;
-import util.AppManager;
+import com.revolut.model.Score;
+import com.revolut.service.ScoreService;
+import com.revolut.util.AppManager;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package model;
+package com.revolut.model;
 
 public class User {
     private long id;

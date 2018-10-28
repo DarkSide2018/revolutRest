@@ -1,6 +1,6 @@
-import dao.H2DaoFactory;
-import dao.ScoreDaoImpl;
-import model.Score;
+import com.revolut.dao.H2DaoFactory;
+import com.revolut.dao.ScoreDaoImpl;
+import com.revolut.model.Score;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;

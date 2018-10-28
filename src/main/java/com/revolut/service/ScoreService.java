@@ -1,8 +1,8 @@
-package service;
+package com.revolut.service;
 
-import dao.interFaces.ScoreDao;
-import model.Score;
-import util.AppManager;
+import com.revolut.dao.interFaces.ScoreDao;
+import com.revolut.model.Score;
+import com.revolut.util.AppManager;
 
 public class ScoreService {
 

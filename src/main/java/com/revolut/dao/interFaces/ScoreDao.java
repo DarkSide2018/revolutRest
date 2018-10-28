@@ -1,6 +1,6 @@
-package dao.interFaces;
+package com.revolut.dao.interFaces;
 
-import model.Score;
+import com.revolut.model.Score;
 
 import java.util.List;
 

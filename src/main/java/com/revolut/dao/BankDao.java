@@ -1,8 +1,8 @@
-package dao;
+package com.revolut.dao;
 
-import model.Score;
-import model.UserTransaction;
-import util.LoggerFactory;
+import com.revolut.model.Score;
+import com.revolut.model.UserTransaction;
+import com.revolut.util.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

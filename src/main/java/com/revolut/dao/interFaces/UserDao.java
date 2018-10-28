@@ -1,6 +1,6 @@
-package dao.interFaces;
+package com.revolut.dao.interFaces;
 
-import model.User;
+import com.revolut.model.User;
 
 import java.util.List;
 

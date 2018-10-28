@@ -1,8 +1,8 @@
-package dao;
+package com.revolut.dao;
 
-import dao.interFaces.UserDao;
-import model.User;
-import util.LoggerFactory;
+import com.revolut.dao.interFaces.UserDao;
+import com.revolut.model.User;
+import com.revolut.util.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

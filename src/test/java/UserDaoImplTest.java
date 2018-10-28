@@ -1,6 +1,6 @@
-import dao.H2DaoFactory;
-import dao.UserDaoImpl;
-import model.User;
+import com.revolut.dao.H2DaoFactory;
+import com.revolut.dao.UserDaoImpl;
+import com.revolut.model.User;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;

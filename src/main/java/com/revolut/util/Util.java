@@ -1,4 +1,4 @@
-package util;
+package com.revolut.util;
 
 import org.apache.log4j.Logger;
 

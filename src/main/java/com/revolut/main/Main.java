@@ -1,11 +1,12 @@
-import dao.H2DaoFactory;
-import dao.UserDaoImpl;
+package com.revolut.main;
+
+
+import com.revolut.servlets.BankServlet;
+import com.revolut.servlets.ScoreServlet;
+import com.revolut.util.Util;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.BankServlet;
-import servlets.ScoreServlet;
-import util.Util;
 
 import java.util.logging.Logger;
 

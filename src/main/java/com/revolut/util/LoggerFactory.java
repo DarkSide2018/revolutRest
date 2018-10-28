@@ -1,4 +1,4 @@
-package util;
+package com.revolut.util;
 
 import java.util.logging.Logger;
 

@@ -1,8 +1,8 @@
-package dao;
+package com.revolut.dao;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.h2.tools.RunScript;
-import util.Util;
+import com.revolut.util.Util;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

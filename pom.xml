@@ -82,7 +82,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>com.revolut.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
