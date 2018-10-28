@@ -5,7 +5,7 @@ java 8
 
 restServer
 
-build: mvn assembly:assembly
+build: mvn clean install assembly:assembly
 
 start server:
 
