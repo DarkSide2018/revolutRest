@@ -14,7 +14,11 @@ import java.util.logging.Logger;
 
 public class BankServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger();
-    private final BankDao bankService = AppManager.getBankDao();
+    private final BankDao bankService;
+
+    public BankServlet() {
+        bankService = AppManager.getBankDao();
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

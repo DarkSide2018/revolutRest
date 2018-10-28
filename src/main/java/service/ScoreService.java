@@ -6,7 +6,11 @@ import util.AppManager;
 
 public class ScoreService {
 
-    private final ScoreDao scoreDao = AppManager.getScoreDao();
+    private final ScoreDao scoreDao;
+
+    public ScoreService() {
+        this.scoreDao = AppManager.getScoreDao();
+    }
 
     public Score getScoreById(long scoreId){
         return scoreDao.getScoreById(scoreId);
