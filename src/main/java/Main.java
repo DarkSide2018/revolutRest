@@ -10,11 +10,11 @@ import util.Util;
 import java.util.logging.Logger;
 
 public class Main {
-    private static final int PORT = Util.getIntegerProperty("port",9998);
+    private static final int PORT = Util.getIntegerProperty("port", 9998);
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         BankServlet bankServlet = new BankServlet();
         ScoreServlet scoreServlet = new ScoreServlet();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);

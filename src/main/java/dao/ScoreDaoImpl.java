@@ -38,7 +38,7 @@ public class ScoreDaoImpl implements ScoreDao {
             }
             return score;
         } catch (Exception e) {
-            LOGGER.warning("error with getUser by id: " + scoreId);
+            LOGGER.warning("error with getScore by id: " + e.getMessage());
         }
         return score;
     }
