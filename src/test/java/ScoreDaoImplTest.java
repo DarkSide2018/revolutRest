@@ -19,7 +19,6 @@ public class ScoreDaoImplTest {
 
     @BeforeClass
     public static void setup() {
-        // prepare test database and test data by executing sql script demo.sql
         log.debug("setting up test database and sample data....");
         H2DaoFactory.populateTestData();
     }

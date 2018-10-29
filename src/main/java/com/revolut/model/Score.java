@@ -1,65 +1,17 @@
 package com.revolut.model;
 
-import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+@Data
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@RequiredArgsConstructor
 public class Score {
     private long id;
-    private long userId;
-    private BigDecimal balance;
-    private String currencyCode;
-
-    public Score(long id, long userId, BigDecimal balance, String currencyCode) {
-        this.id = id;
-        this.userId = userId;
-        this.balance = balance;
-        this.currencyCode = currencyCode;
-    }
-
-    public Score(long userId, BigDecimal balance, String currencyCode) {
-        this.userId = userId;
-        this.balance = balance;
-        this.currencyCode = currencyCode;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    public void setCurrencyCode(String currencyCode) {
-        this.currencyCode = currencyCode;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Score{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", balance=" + balance +
-                ", currencyCode='" + currencyCode + '\'' +
-                '}';
-    }
-}
+    private final long userId;
+    private final BigDecimal balance;
+    private final String currencyCode;
+  }
