@@ -23,10 +23,10 @@ public class BankServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
-            String fromScore = req.getParameter("fromScore");
+            String fromScore = req.getParameter("fromAccount");
             if (fromScore == null) throw new Exception("fromScore empty");
             // analog for another fields
-            String toScore = req.getParameter("toScore");
+            String toScore = req.getParameter("toAccount");
             String currency = req.getParameter("currency");
             String amount = req.getParameter("amount");
             UserTransaction userTransaction = new UserTransaction(currency, new BigDecimal(amount), Long.valueOf(fromScore), Long.valueOf(toScore));

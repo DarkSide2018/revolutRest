@@ -1,19 +1,19 @@
 package com.revolut.dao.interFaces;
 
-import com.revolut.model.Score;
+import com.revolut.model.Account;
 
 import java.util.List;
 
 public interface ScoreDao {
-    Score getScoreById(long scoreId);
+    Account getScoreById(long scoreId);
 
-    List<Score> getScoreByCurrencyCode(String code);
+    List<Account> getScoreByCurrencyCode(String code);
 
-    List<Score> getAllScores();
+    List<Account> getAllScores();
 
-    void insertScore(Score score);
+    void insertScore(Account account);
 
-    void updateScore(Long scoreId, Score score);
+    void updateScore(Long scoreId, Account account);
 
     void deleteScore(long scoreId);
 }

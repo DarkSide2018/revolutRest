@@ -1,6 +1,6 @@
 package com.revolut.dao;
 
-import com.revolut.model.Score;
+import com.revolut.model.Account;
 import com.revolut.model.UserTransaction;
 import com.revolut.util.LoggerFactory;
 
@@ -22,8 +22,8 @@ public class BankDao {
         PreparedStatement lockStmt = null;
         PreparedStatement updateStmt = null;
         ResultSet rs = null;
-        Score fromScore = null;
-        Score toScore = null;
+        Account fromAccount = null;
+        Account toAccount = null;
         try {
             conn = H2DaoFactory.getConnection();
             conn.setAutoCommit(false);
@@ -31,7 +31,7 @@ public class BankDao {
             lockStmt.setLong(1, userTransaction.getFromScoreId());
             rs = lockStmt.executeQuery();
             if (rs.next()) {
-                fromScore = new Score(rs.getLong("id"),
+                fromAccount = new Account(rs.getLong("id"),
                         rs.getLong("userId"),
                         rs.getBigDecimal("balance"),
                         rs.getString("currencyCode"));
@@ -40,24 +40,24 @@ public class BankDao {
             lockStmt.setLong(1, userTransaction.getToScoreId());
             rs = lockStmt.executeQuery();
             if (rs.next()) {
-                toScore = new Score(rs.getLong("id"),
+                toAccount = new Account(rs.getLong("id"),
                         rs.getLong("userId"),
                         rs.getBigDecimal("balance"),
                         rs.getString("currencyCode"));
 
             }
-            if (fromScore == null || toScore == null) {
+            if (fromAccount == null || toAccount == null) {
                 throw new Exception("Fail to lock both Scores for write");
             }
-            if (!fromScore.getCurrencyCode().equals(userTransaction.getCurrencyCode())) {
+            if (!fromAccount.getCurrencyCode().equals(userTransaction.getCurrencyCode())) {
                 throw new Exception(
                         "Fail to transfer Fund, transaction ccy are different from source/destination");
             }
-            if (!fromScore.getCurrencyCode().equals(toScore.getCurrencyCode())) {
+            if (!fromAccount.getCurrencyCode().equals(toAccount.getCurrencyCode())) {
                 throw new Exception(
-                        "Fail to transfer Fund, the source and destination Score are in different currency");
+                        "Fail to transfer Fund, the source and destination Account are in different currency");
             }
-            BigDecimal fromScoreLeftOver = fromScore.getBalance().subtract(userTransaction.getAmount());
+            BigDecimal fromScoreLeftOver = fromAccount.getBalance().subtract(userTransaction.getAmount());
             if (fromScoreLeftOver.longValue() < 0L) {
                 throw new Exception("Not enough money ");
             }
@@ -65,7 +65,7 @@ public class BankDao {
             updateStmt.setBigDecimal(1, fromScoreLeftOver);
             updateStmt.setLong(2, userTransaction.getFromScoreId());
             updateStmt.addBatch();
-            updateStmt.setBigDecimal(1, toScore.getBalance().add(userTransaction.getAmount()));
+            updateStmt.setBigDecimal(1, toAccount.getBalance().add(userTransaction.getAmount()));
             updateStmt.setLong(2, userTransaction.getToScoreId());
             updateStmt.addBatch();
             updateStmt.executeBatch();

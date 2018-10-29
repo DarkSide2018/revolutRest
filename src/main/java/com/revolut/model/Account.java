@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @RequiredArgsConstructor
-public class Score {
+public class Account {
     private long id;
     private final long userId;
     private final BigDecimal balance;

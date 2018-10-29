@@ -1,7 +1,7 @@
 package com.revolut.service;
 
 import com.revolut.dao.interFaces.ScoreDao;
-import com.revolut.model.Score;
+import com.revolut.model.Account;
 import com.revolut.util.AppManager;
 
 public class ScoreService {
@@ -12,7 +12,7 @@ public class ScoreService {
         this.scoreDao = AppManager.getScoreDao();
     }
 
-    public Score getScoreById(long scoreId){
+    public Account getScoreById(long scoreId){
         return scoreDao.getScoreById(scoreId);
     }
 }

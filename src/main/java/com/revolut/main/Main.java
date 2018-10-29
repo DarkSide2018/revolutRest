@@ -2,7 +2,7 @@ package com.revolut.main;
 
 
 import com.revolut.servlets.BankServlet;
-import com.revolut.servlets.ScoreServlet;
+import com.revolut.servlets.AccountServlet;
 import com.revolut.util.Util;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -17,10 +17,10 @@ public class Main {
 
     public static void main(String[] args) {
         BankServlet bankServlet = new BankServlet();
-        ScoreServlet scoreServlet = new ScoreServlet();
+        AccountServlet accountServlet = new AccountServlet();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(bankServlet), "/bank");
-        context.addServlet(new ServletHolder(scoreServlet), "/score");
+        context.addServlet(new ServletHolder(accountServlet), "/account");
         Server server = new Server(PORT);
         server.setHandler(context);
         try {

@@ -24,7 +24,7 @@ Services
 
 | HTTP METHOD | PATH | USAGE |
 | -----------| ------ | ------ |
-| GET | /score?scoreID={scoreID} | get score by id | 
-| POST | /bank?fromScore={scoreID}&toScore={scoreID}&currency={currencyCode}&amount={amount}|  transaction between 2 user accounts | 
+| GET | /account?accountID={accountID} | get account by id | 
+| POST | /bank?fromAccount={accountID}&toAccount={accountID}&currency={currencyCode}&amount={amount}|  transaction between 2 user accounts | 
 
     

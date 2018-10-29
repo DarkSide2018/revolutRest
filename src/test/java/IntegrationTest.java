@@ -43,10 +43,10 @@ public class IntegrationTest {
     @Test
     @Ignore
     public void testTransfer() throws URISyntaxException, IOException {
-        URI uriScore1 = builder.setPath("/score").addParameter("scoreId", "1")
+        URI uriScore1 = builder.setPath("/account").addParameter("accountId", "1")
                 .build();
         builder.clearParameters();
-        URI uriScore2 = builder.setPath("/score").addParameter("scoreId", "2")
+        URI uriScore2 = builder.setPath("/account").addParameter("accountId", "2")
                 .build();
         HttpGet getForScore1 = new HttpGet(uriScore1);
         HttpGet getForScore2 = new HttpGet(uriScore2);
@@ -61,8 +61,8 @@ public class IntegrationTest {
         URI uri = builder.setPath("/bank").build();
         HttpPost request = new HttpPost(uri);
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("fromScore", "1"));
-        params.add(new BasicNameValuePair("toScore", "2"));
+        params.add(new BasicNameValuePair("fromAccount", "1"));
+        params.add(new BasicNameValuePair("toAccount", "2"));
         params.add(new BasicNameValuePair("currency", "USD"));
         params.add(new BasicNameValuePair("amount", DELTA));
         request.setEntity(new UrlEncodedFormEntity(params));
